@@ -1,0 +1,17 @@
+config:
+  target: "http://localhost:8080"
+  phases:
+    - duration: 200
+      arrivalRate: 10
+      rampTo: 100
+  payload:
+    path: "urls.csv"
+    fields:
+      - "url"
+scenarios:
+  - name: "create shortenUrl"
+    flow:
+      - post:
+          url: "/shortenUrl"
+          json:
+            originalUrl: "{{ url }}"
